@@ -54,5 +54,72 @@ Remote github
 
 
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Registration Form</title>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form>
+    <label>Name:</label><br>
+    <input type="text" name="name"><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email"><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password"><br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html>
+
+
+What is Source Code Management (SCM) on GitHub?
+Source Code Management (SCM) on GitHub means using GitHub to:
+Store your source code
+Track all changes
+Collaborate with others
+Review and merge updates
+Manage versions of your project
+GitHub acts as an online storage + collaboration system for your Git repositories.
+
+How Source Code Management Works on GitHub
+1. Create a repository (repo)
+A repo is like a folder that stores your code and history.
+2. Push your code to GitHub
+Upload your project using Git.
+3. track changes
+Every update you make is stored as a commit.
+4. Work with branches
+Branches allow separate development without messing up the main code.
+5. Create Pull Requests (PR)
+Ask to merge branch changes into the main project.
+6. Merge changes
+Approved PRs are merged into the main branch.
+7. Collaborate with team
+Teams can comment, review, and contribute.
+
+Common Git Commands Used for SCM on GitHub
+.Initialize & Connect: git init
+git remote add origin <repo-url>
+.add and commit
+git add .
+git commit -m "Initial commit"
+.push to git hub
+git push -u origin main
+.Fetch & Pull
+git pull
+.Branch Management
+git branch <branch-name>
+git checkout <branch-name>
+git merge <branch-name>
+
+
 
 
