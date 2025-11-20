@@ -1,2 +1,58 @@
-hello daeregdsergtegtedg
-tyiutyutuytuyrtuyrtyutuytuyrturtuyrtuyrtuyrtuyrtyuturtu
+What is Git?
+Git is a distributed version control system used to track changes in source code.
+It lets you:
+Save versions of your project
+Go back to previous versions
+Work on branches
+Collaborate without overwriting each other's work
+Git works on your local computer.
+
+GitHub?
+GitHub is an online platform that hosts Git repositories.
+It lets you:
+Store your Git repositories in the cloud
+Collaborate with others
+Review code
+Manage projects (issues, pull requests, etc.)
+GitHub is a website/service that works using Git.
+
+Git	GitHub differences
+Type	Version control tool	Hosting & collaboration platform
+Where it works	Local computer	Online (cloud)
+Purpose	Track project history	Store/share Git repositories
+Works without the Internet?	Yes	No
+Created by	Linus Torvalds	Microsoft (owns GitHub)
+
+Git Commands (Used in Terminal)
+Basic Commands
+Command	Description
+git init	Create a new Git repository
+git clone <url>	Download a repository
+git status	Check current repo status
+git add <file>	Stage a file for commit
+git add .	Stage all files
+git commit -m "message"	Save changes
+git log	Show commit history
+
+Branching
+
+| Command                 | Description                        |
+| ----------------------- | ---------------------------------- |
+| `git branch`            | List branches                      |
+| `git branch <name>`     | Create a new branch                |
+| `git checkout <branch>` | Switch branches                    |
+| `git merge <branch>`    | Merge a branch into current branch |
+
+Remote github
+
+| Command                       | Description                       |
+| ----------------------------- | --------------------------------- |
+| `git remote add origin <url>` | Connect to GitHub repo            |
+| `git push -u origin main`     | Push code to GitHub               |
+| `git pull`                    | Download latest changes           |
+| `git fetch`                   | Check for updates without merging |
+
+
+
+
+
