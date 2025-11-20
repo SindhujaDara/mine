@@ -123,3 +123,132 @@ git merge <branch-name>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is Jenkins?
+
+Jenkins is an **open-source automation tool** used for:
+
+* CI/CD (Continuous Integration & Continuous Delivery)
+* Automating builds, tests, and deployments
+
+Step 5: Unlock Jenkins**
+
+1. Navigate to:
+C:\Program Files\Jenkins\secrets\initialAdminPassword
+2. Copy the password
+3. Paste it into the Jenkins unlock page
+
+6: Install Plugins
+Choose:Install Suggested Plugins(recommended)
+
+Step 7: Create Admin User
+Fill out:
+* Username
+* Password
+* Email
+Jenkins setup is complete!
+
+2. Install Jenkins on Ubuntu
+
+Step 1: Update system
+sudo apt update
+sudo apt upgrade -y
+
+Step 2: Install Java
+sudo apt install openjdk-17-jdk -y
+
+ Step 3: Add Jenkins repository
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+Step 4: Install Jenkins
+sudo apt update
+sudo apt install jenkins -y
+
+Step 5: Start & enable Jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+Step 6: Open Jenkins in browser
+http://your-server-ip:8080
+http://localhost:8080
+
+Step 7: Get initial admin password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Step 8: Install plugins & create admin user
+Done!
+
+ Basic Jenkins Setup (After Installation)**
+
+Install Recommended Plugins
+
+Jenkins will ask you to install:
+
+* Git
+* Pipeline
+* Credentials
+* Blue Ocean (optional)
+* NodeJS plugin (optional)
+
+Configure Tools
+Go to:
+**Manage Jenkins → Global Tool Configuration**
+Install:
+
+* JDK
+* Git
+* Maven (optional)
+* Node (optional)
+
+Create First Job
+1. Click **New Item**
+2. Choose:
+
+   * **Freestyle project**, or
+   * **Pipeline**
+3. Add description
+4. Configure steps (build, test, deploy)
+5. Save & Build
+
+4. Verify Jenkins Installation**
+Run:
+systemctl status jenkins
+Or check from browser:
+http://localhost:8080
+
+
+
+
+
+
+
+
+
+
+
