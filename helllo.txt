@@ -52,7 +52,7 @@ Remote github
 | `git pull`                    | Download latest changes           |
 | `git fetch`                   | Check for updates without merging |
 
-
+-------------------------------------------------------
 
 <!DOCTYPE html>
 <html>
@@ -79,7 +79,7 @@ Remote github
 </body>
 </html>
 
-
+-----------------------------------------------------
 What is Source Code Management (SCM) on GitHub?
 Source Code Management (SCM) on GitHub means using GitHub to:
 Store your source code
@@ -119,7 +119,7 @@ git pull
 git branch <branch-name>
 git checkout <branch-name>
 git merge <branch-name>
-
+-----------------------------------------------------------
 
 
 
