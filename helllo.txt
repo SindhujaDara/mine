@@ -23,16 +23,76 @@ Purpose	Track project history	Store/share Git repositories
 Works without the Internet?	Yes	No
 Created by	Linus Torvalds	Microsoft (owns GitHub)
 
-Git Commands (Used in Terminal)
-Basic Commands
-Command	Description
-git init	Create a new Git repository
-git clone <url>	Download a repository
-git status	Check current repo status
-git add <file>	Stage a file for commit
-git add .	Stage all files
-git commit -m "message"	Save changes
-git log	Show commit history
+
+
+ **Git & GitHub commands
+### **1. Git Configuration**
+
+1. `git config --global user.name "Your Name"`
+2. `git config --global user.email "your@email.com"`
+
+---
+
+### **2. Initialize Repository**
+
+3. `git init`
+
+---
+
+### **3. Add & Commit**
+
+4. `git add .`
+5. `git commit -m "message"`
+
+---
+
+### **4. Connect Local to GitHub**
+
+6. `git remote add origin <repo-url>`
+7. `git branch -M main`
+8. `git push -u origin main`
+
+---
+
+### **5. Push After Changes**
+
+9. `git add .`
+10. `git commit -m "update"`
+11. `git push`
+
+---
+
+### **6. Pull Latest from GitHub**
+
+12. `git pull`
+
+---
+
+### **7. Clone Repository**
+
+13. `git clone <repo-url>`
+
+---
+
+### **8. Branch Operations**
+
+14. `git branch <branch-name>`
+15. `git checkout <branch-name>`
+16. `git checkout -b <branch-name>`
+17. `git merge <branch-name>`
+
+---
+
+### **9. Check Status & Log**
+
+18. `git status`
+19. `git log`
+
+---
+
+### **10. Remove Remote**
+
+20. `git remote remove origin`
 
 Branching
 
@@ -51,6 +111,10 @@ Remote github
 | `git push -u origin main`     | Push code to GitHub               |
 | `git pull`                    | Download latest changes           |
 | `git fetch`                   | Check for updates without merging |
+
+
+
+
 
 -------------------------------------------------------
 
@@ -106,7 +170,8 @@ Approved PRs are merged into the main branch.
 Teams can comment, review, and contribute.
 
 Common Git Commands Used for SCM on GitHub
-.Initialize & Connect: git init
+.Initialize & Connect
+git init
 git remote add origin <repo-url>
 .add and commit
 git add .
@@ -122,29 +187,6 @@ git merge <branch-name>
 -----------------------------------------------------------
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 What is Jenkins?
 
 Jenkins is an **open-source automation tool** used for:
@@ -152,22 +194,6 @@ Jenkins is an **open-source automation tool** used for:
 * CI/CD (Continuous Integration & Continuous Delivery)
 * Automating builds, tests, and deployments
 
-Step 5: Unlock Jenkins**
-
-1. Navigate to:
-C:\Program Files\Jenkins\secrets\initialAdminPassword
-2. Copy the password
-3. Paste it into the Jenkins unlock page
-
-6: Install Plugins
-Choose:Install Suggested Plugins(recommended)
-
-Step 7: Create Admin User
-Fill out:
-* Username
-* Password
-* Email
-Jenkins setup is complete!
 
 2. Install Jenkins on Ubuntu
 
@@ -180,11 +206,10 @@ sudo apt install openjdk-17-jdk -y
 
  Step 3: Add Jenkins repository
 
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
-  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
 
 Step 4: Install Jenkins
 sudo apt update
@@ -193,6 +218,13 @@ sudo apt install jenkins -y
 Step 5: Start & enable Jenkins
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
+            or
+sudo systemctl status jenkins
+sudo apt install ufw -y
+sudo ufw allow 8080
+sudo ufw status 
+sudo ufw enable
+sudo ufw status
 
 Step 6: Open Jenkins in browser
 http://your-server-ip:8080
@@ -200,6 +232,7 @@ http://localhost:8080
 
 Step 7: Get initial admin password
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
 
 Step 8: Install plugins & create admin user
 Done!
@@ -242,7 +275,154 @@ systemctl status jenkins
 Or check from browser:
 http://localhost:8080
 
+------------------------------------------
 
+Here is the **simplest explanation** you will ever find 
+
+---
+
+# **What is a Docker Container Image?**
+
+**Simple meaning:**
+A **Docker image** is a *blueprint / template / model* used to create containers.
+
+Think of it like:
+
+* **Image = Recipe**
+* **Container = Dish prepared from that recipe**
+
+### Example
+
+You write in your Dockerfile:
+
+```
+FROM python
+COPY app.py .
+CMD ["python", "app.py"]
+```
+
+This **Dockerfile** → builds an **Image** → from that image you run **containers**.
+
+---
+
+#  **Why do we need a Docker Image?**
+
+Because:
+
+1️ It contains **your app + dependencies**
+(Example: Python version, libraries, app files)
+
+2️ It ensures the app runs **exactly the same on any system**
+Laptop, server, cloud → same result.
+
+3️ It allows you to **quickly create containers**
+No need to re-setup every time.
+
+---
+
+#  **What is a Docker Container? (Simple)**
+
+Container = **Running instance** of the Image.
+Image is **static**, Container is **active**.
+
+Example:
+
+* Image = a cake mold
+* Container = actual cake made from it.
+
+---
+
+#  **Difference: Image vs Container (Super Simple)**
+
+| Image                 | Container           |
+| --------------------- | ------------------- |
+| Blueprint             | Running application |
+| Stored file           | Live instance       |
+| Cannot run by itself  | Runs app            |
+| Built from Dockerfile | Created from image  |
+
+---
+
+# 🛠️ **Why do we use Docker Tools?**
+
+Docker Tools = Docker Engine, Docker CLI, Docker Desktop, Docker Hub.
+
+We use these because they help to:
+
+### ✔ Build images
+
+`docker build -t myapp .`
+
+### ✔ Run containers
+
+`docker run myapp`
+
+### ✔ Share images (via Docker Hub)
+
+`docker push myapp`
+
+### ✔ Pull existing images
+
+`docker pull python`
+
+### ✔ Manage containers & networks
+
+Start, stop, delete, monitor, connect.
+
+---
+
+#  Super Simple Summary
+
+* **Docker Image** → Template/Model for your app
+* **Docker Container** → Running version of image
+* **Docker Tools** → Help you build, run, share, manage
+
+Docker is a containerization platform that allows you to package an application along with all its dependencies into a lightweight, portable unit called a container.
+These containers run reliably and consistently across different computing environments.
+Key Terms in Definition
+
+Containerization → packaging apps with dependencies
+
+Image → template used to create containers
+
+Container → running instance of an image
+
+Isolated environment → app runs independently of the host OS
+
+Portable → same behavior everywhere (Windows, Linux, cloud)
+
+
+7777
+
+sudo apt update 
+sudo apt install docker.io -y
+sudo systemctl start docker 
+sudo systemctl enable docker
+
+sudo  docker run hello-world
+
+mkdir mydockerapp
+cd mydockerapp
+
+nano app.py    print("Hello from docker")
+nano Dockerfile   From python
+                  COPY app.py .
+                  CMD [""""]
+77  docker image build
+sudo docker build -t myapp .
+
+run container 
+sudo docker run myapp  777
+
+
+66 
+sudo docker build -t imagename .
+sudo docker images
+sudo docker run -it imagename
+sudo docker ps -a
+sudo docker start imagecontainer id
+sudo docker inspect --format='{{.config.Image}}'
+666
 
 
 
