@@ -339,7 +339,186 @@ class MyApp extends StatelessWidget {
 * Displays items in a grid (rows and columns).
 * Used for gallery view, product listing, dashboards.
 
+////////////RESPONSIVE UI TO DIFFERENT SCREENS //////////////////
+import 'package:flutter/material.dart';
 
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Ultra Simple Responsive UI")),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            // if width < 600 = mobile
+            if (constraints.maxWidth < 600) {
+              return Column(
+                children: [
+                  Container(height: 100, color: Colors.red, margin: EdgeInsets.all(10)),
+                  Container(height: 100, color: Colors.blue, margin: EdgeInsets.all(10)),
+                ],
+              );
+            } else {
+              // tablet or bigger
+              return Row(
+                children: [
+                  Expanded(child: Container(height: 100, color: Colors.red, margin: EdgeInsets.all(10))),
+                  Expanded(child: Container(height: 100, color: Colors.blue, margin: EdgeInsets.all(10))),
+                ],
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+
+/////////////// MEDIA QUERIES AND BREAK POINTS //////////////////////////////
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("MediaQuery Example")),
+        body: ResponsiveText(),
+      ),
+    );
+  }
+}
+
+class ResponsiveText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;  // Get screen width
+    String view;
+
+    if (width < 600) {
+      view = "Mobile View";
+    } else if (width < 1200) {
+      view = "Tablet View";
+    } else {
+      view = "Desktop View";
+    }
+
+    return Center(
+      child: Text(
+        view,
+        style: TextStyle(
+          fontSize: width < 600 ? 20 : width < 1200 ? 28 : 36,
+          fontWeight: FontWeight.bold,
+          color: Colors.blue,
+        ),
+      ),
+    );
+  }
+}
+
+
+/////////////////////// NAVIGATORS WITH NAMED ROUTES ////////////////////////////
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    initialRoute: '/',   // Starting screen
+    routes: {
+      '/': (context) => Screen1(),      // Name for Screen1
+      '/screen2': (context) => Screen2() // Name for Screen2
+    },
+  ));
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Screen 1")),
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Go to Screen 2"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/screen2'); // Go using route name
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Screen 2")),
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Back"),
+          onPressed: () {
+            Navigator.pop(context); // Go back
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+/////////////////////// PROVIDER SET STTATE ////////////////////////////
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    initialRoute: '/',   // Starting screen
+    routes: {
+      '/': (context) => Screen1(),      // Name for Screen1
+      '/screen2': (context) => Screen2() // Name for Screen2
+    },
+  ));
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Screen 1")),
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Go to Screen 2"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/screen2'); // Go using route name
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Screen 2")),
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Back"),
+          onPressed: () {
+            Navigator.pop(context); // Go back
+          },
+        ),
+      ),
+    );
+  }
+}
 
 
 
