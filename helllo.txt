@@ -237,4 +237,110 @@ class MyApp extends StatelessWidget {
 
 
 
+2.a) 
+ **1. Text Widget**
+
+* Displays simple text on the screen.
+* Most commonly used widget.
+* Supports styling like font size, color, weight.
+
+## **2. Container Widget**
+
+* A box model widget.
+* Used for padding, margin, borders, background color, height, width.
+* Mainly used for UI design.
+
+## **3. Row Widget**
+
+* Displays children **horizontally** in a row.
+* Uses `mainAxisAlignment` & `crossAxisAlignment` for alignment.
+
+## **4. Column Widget**
+
+* Displays children **vertically**.
+* Very similar to Row but vertical direction.
+
+## **5. Image Widget**
+
+* Shows images from assets, network, memory, or files.
+* Commonly used: `Image.asset()` or `Image.network()`.
+
+## **6. Icon Widget**
+
+* Displays built-in icons from Material Icons library.
+* Can set size and color.
+
+## **7. Scaffold Widget**
+
+* Provides basic visual layout structure.
+* Contains AppBar, Body, FloatingActionButton, Drawer, etc.
+
+## **8. AppBar Widget**
+
+* A horizontal bar at the top.
+* Contains title, actions (buttons), and background color.
+
+## **9. ElevatedButton Widget**
+
+* A Material Design button.
+* Used for actions like submit, click, next.
+* Has elevation and background color.
+
+## **10. TextField Widget**
+
+* Used to take input from the user.
+* Supports controllers, keyboard type, decoration, validation.
+
+## **11. ListView Widget**
+
+* Scrollable list of widgets.
+* Can be vertical or horizontal.
+* Used when showing long lists (contacts, messages, products).
+
+## **12. Stack Widget**
+
+* Places widgets **on top of each other**.
+* Used for overlapping UI elements.
+
+## **13. Card Widget**
+
+* Displays content inside a Material Design card.
+* Has rounded corners, shadows.
+
+## **14. SizedBox Widget**
+
+* Used to create space between widgets.
+* Can also set fixed width or height.
+
+## **15. Padding Widget**
+
+* Adds internal spacing around a child widget.
+
+## **16. Center Widget**
+
+* Centers the child inside the available space.
+
+## **17. AlertDialog Widget**
+
+* Displays pop-up dialog boxes.
+* Used for warnings, confirmations, messages.
+
+## **18. Drawer Widget**
+
+* A side navigation panel that slides from the left.
+
+## **19. BottomNavigationBar Widget**
+
+* A bar at the bottom with multiple tabs.
+* Used for navigation between screens.
+
+## **20. GridView Widget**
+
+* Displays items in a grid (rows and columns).
+* Used for gallery view, product listing, dashboards.
+
+
+
+
+
 
