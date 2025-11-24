@@ -475,51 +475,46 @@ class Screen2 extends StatelessWidget {
 
 /////////////////////// PROVIDER SET STTATE ////////////////////////////
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',   // Starting screen
-    routes: {
-      '/': (context) => Screen1(),      // Name for Screen1
-      '/screen2': (context) => Screen2() // Name for Screen2
-    },
-  ));
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => Counter(),
+      child: MaterialApp(home: CounterScreen()),
+    ),
+  );
 }
 
-class Screen1 extends StatelessWidget {
+class Counter with ChangeNotifier {
+  int count = 0;
+  void inc() {
+    count++;
+    notifyListeners();
+  }
+}
+
+class CounterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var c = Provider.of<Counter>(context);
+
     return Scaffold(
-      appBar: AppBar(title: Text("Screen 1")),
+      appBar: AppBar(title: Text("Provider")),
       body: Center(
-        child: ElevatedButton(
-          child: Text("Go to Screen 2"),
-          onPressed: () {
-            Navigator.pushNamed(context, '/screen2'); // Go using route name
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Count: ${c.count}"),
+            ElevatedButton(
+              onPressed: () {
+                c.inc();
+              },
+              child: Text("Increase"),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-class Screen2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Screen 2")),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Back"),
-          onPressed: () {
-            Navigator.pop(context); // Go back
-          },
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
