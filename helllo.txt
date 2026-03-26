@@ -1,520 +1,373 @@
-1) import 'package:flutter/material.dart';
+6 DECISION TREE
+-----------------
+# Step 1: Import Libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import accuracy_score
 
-void main() {
-  runApp(MyApp());
+# Step 2: Load Dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Step 3: Split Data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+# Step 4: Train Basic Model
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+
+# Step 5: Predict & Accuracy
+y_pred = model.predict(X_test)
+print("Basic Accuracy:", accuracy_score(y_test, y_pred))
+
+# Step 6: Show Tree
+plt.figure(figsize=(10,6))
+plot_tree(model, filled=True)
+plt.show()
+
+
+# =========================
+# 🔧 Parameter Tuning
+# =========================
+
+# Step 7: Define Parameters
+params = {
+    'max_depth': [2, 3, 4],
+    'criterion': ['gini', 'entropy']
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Hello World App")),
-        body: Center(
-          child: Text(
-            "Hello, Flutter!",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
-    );
-  }
+# Step 8: Grid Search
+grid = GridSearchCV(DecisionTreeClassifier(), params, cv=3)
+grid.fit(X_train, y_train)
+
+# Step 9: Best Parameters
+print("Best Parameters:", grid.best_params_)
+
+# Step 10: Best Model Accuracy
+best_model = grid.best_estimator_
+y_pred_best = best_model.predict(X_test)
+
+print("Tuned Accuracy:", accuracy_score(y_test, y_pred_best))
+
+
+ 1111111111111111111111111111
+
+# Import required module
+import statistics
+
+# Take input from user
+data = list(map(int, input("Enter numbers separated by space: ").split()))
+
+# Mean
+mean = sum(data) / len(data)
+
+# Median
+median = statistics.median(data)
+
+# Mode (handle multiple modes)
+try:
+    mode = statistics.mode(data)
+except:
+    mode = "No unique mode"
+
+# Variance
+variance = statistics.variance(data)
+
+# Standard Deviation
+std_dev = statistics.stdev(data)
+
+# Display results
+print("\nResults:")
+print("Mean =", mean)
+print("Median =", median)
+print("Mode =", mode)
+print("Variance =", variance)
+print("Standard Deviation =", std_dev)
+
+2222222222222222222222222222222222222222222
+import statistics
+
+data = [10, 20, 30, 40, 50, 20]
+
+# Mean
+print("Mean:", statistics.mean(data))
+
+# Median
+print("Median:", statistics.median(data))
+
+# Mode
+print("Mode:", statistics.mode(data))
+
+# Variance
+print("Variance:", statistics.variance(data))
+
+# Standard Deviation
+print("Standard Deviation:", statistics.stdev(data))
+
+import math
+
+# Square root
+print("Square Root:", math.sqrt(25))
+
+# Power
+print("Power:", math.pow(2, 3))
+
+# Logarithm
+print("Log:", math.log(10))
+
+# Trigonometry
+print("Sin:", math.sin(math.pi/2))
+
+# Constants
+print("Value of Pi:", math.pi)
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+# Basic operations
+print("Array:", arr)
+print("Mean:", np.mean(arr))
+print("Sum:", np.sum(arr))
+print("Max:", np.max(arr))
+
+# Matrix
+matrix = np.array([[1, 2], [3, 4]])
+print("Matrix:\n", matrix)
+
+# Matrix multiplication
+print("Matrix Product:\n", np.dot(matrix, matrix))
+
+from scipy import stats
+import numpy as np
+
+data = [10, 20, 20, 30, 40]
+
+# Mean using SciPy
+print("Mean:", np.mean(data))
+
+# Mode using SciPy
+mode = stats.mode(data)
+print("Mode:", mode.mode[0])
+
+# Standard deviation
+print("Std Dev:", np.std(data))
+
+3333333333333333333333333333333333333333333333333
+
+Pandas (Data Handling Library)
+🔹 What is Pandas?
+
+Pandas is a powerful Python library used for:
+
+Data manipulation
+Data cleaning
+Data analysis
+
+It works mainly with:
+
+Series → 1D data
+DataFrame → 2D table (like Excel)
+🔹 Why Pandas is used in ML?
+Handles large datasets
+Cleans missing data
+Prepares data before training ML models
+🔹 Example Code (Pandas)
+import pandas as pd
+
+# Create a DataFrame
+data = {
+    "Name": ["A", "B", "C"],
+    "Marks": [85, 90, 78]
 }
 
+df = pd.DataFrame(data)
+
+# Display data
+print("DataFrame:")
+print(df)
+
+# Basic operations
+print("Mean Marks:", df["Marks"].mean())
+print("Max Marks:", df["Marks"].max())
+🔹 Output
+DataFrame:
+  Name  Marks
+0    A     85
+1    B     90
+2    C     78
+
+Mean Marks: 84.33
+Max Marks: 90
+2. 📊 Matplotlib (Data Visualization Library)
+🔹 What is Matplotlib?
+
+Matplotlib is a library used for:
+
+Graphs
+Charts
+Data visualization
+🔹 Why Matplotlib is used in ML?
+Helps understand data visually
+Detects patterns & trends
+Useful for model result visualization
+🔹 Types of Graphs
+Line Graph
+Bar Chart
+Histogram
+Pie Chart
+🔹 Example Code (Matplotlib)
+import matplotlib.pyplot as plt
+
+# Data
+students = ["A", "B", "C"]
+marks = [85, 90, 78]
+
+# Create bar chart
+plt.bar(students, marks)
 
-2) import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int count = 0; // starting value
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Simple Counter")),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Count: $count",
-                style: TextStyle(fontSize: 30),
-              ),
-              SizedBox(height: 20), // space between text & button
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    count++; // increase number
-                  });
-                },
-                child: Text("Click Me"),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-3) import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: LoginPage(),
-  ));
-}
-
-class LoginPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Login Page")),
-      body: Column(
-        children: [
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Username",
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Password",
-            ),
-            obscureText: true,
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text("Login"),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-
-4) import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(home: Screen1()));
-}
-
-class Screen1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(" First Screen ")),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Go to Screen 2"),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Screen2()),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(" Second Screen ")),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Back to Screen 1"),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-    );
-  }
-}
-
-
-5) import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(home: SimpleCalc()));
-}
-
-class SimpleCalc extends StatefulWidget {
-  @override
-  State<SimpleCalc> createState() => _SimpleCalcState();
-}
-
-class _SimpleCalcState extends State<SimpleCalc> {
-  var num1 = TextEditingController();
-  var num2 = TextEditingController();
-  var result = "";
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Calculator")),
-      body: Column(
-        children: [
-          TextField(
-            controller: num1,
-            decoration: InputDecoration(hintText: "Number 1"),
-            keyboardType: TextInputType.number,
-          ),
-          TextField(
-            controller: num2,
-            decoration: InputDecoration(hintText: "Number 2"),
-            keyboardType: TextInputType.number,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                result = "Result: ${int.parse(num1.text) + int.parse(num2.text)}";
-              });
-            },
-            child: Text("ADD"),
-          ),
-          Text(result, style: TextStyle(fontSize: 25)),
-        ],
-      ),
-    );
-  }
-}
-
-
-6) import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(home:MyApp()));
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          title: Text("Image & Icon Display"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Display Icon
-              Icon(
-                Icons.star,
-                size: 60,      // Icon size
-                color: Colors.blue,
-              ),
-
-              SizedBox(height: 20),
-
-              // Display Image from Internet
-              Image.network(
-                'https://picsum.photos/200/300', // sample random image
-                width: 200,
-                height: 200,
-              ),
-            ],
-          ),
-        ),
-      );
-  }
-}
+# Labels
+plt.xlabel("Students")
+plt.ylabel("Marks")
+plt.title("Student Marks")
 
+# Show graph
+plt.show()
+🔹 Output
+
+👉 Displays a bar chart showing marks of students
 
 
-2.a) 
- **1. Text Widget**
+444444444444444444444444444444444444444444444
+# Step 1: Input data (X and Y values)
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 5, 4, 5]
+
+n = len(x)
+
+# Step 2: Find mean of x and y
+mean_x = sum(x) / n
+mean_y = sum(y) / n
+
+# Step 3: Calculate slope (b1)
+numerator = 0
+denominator = 0
+
+for i in range(n):
+    numerator += (x[i] - mean_x) * (y[i] - mean_y)
+    denominator += (x[i] - mean_x) ** 2
+
+b1 = numerator / denominator   # slope
+
+# Step 4: Calculate intercept (b0)
+b0 = mean_y - b1 * mean_x
 
-* Displays simple text on the screen.
-* Most commonly used widget.
-* Supports styling like font size, color, weight.
+# Step 5: Print line equation
+print("Regression Line: y =", b0, "+", b1, "* x")
+
+# Step 6: Predict value
+x_new = 6
+y_pred = b0 + b1 * x_new
+
+print("Predicted value when x =", x_new, "is", y_pred)
+
+
+555555555555555555555555555555555555555555555
+# Import libraries
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Sample dataset
+# Features: [Area (sq ft), Bedrooms, Age (years)]
+X = np.array([
+    [1000, 2, 5],
+    [1500, 3, 10],
+    [2000, 4, 15],
+    [2500, 4, 20],
+    [3000, 5, 8]
+])
 
-## **2. Container Widget**
+# Target: House Price (in lakhs)
+y = np.array([50, 65, 80, 95, 120])
 
-* A box model widget.
-* Used for padding, margin, borders, background color, height, width.
-* Mainly used for UI design.
+# Create model
+model = LinearRegression()
 
-## **3. Row Widget**
+# Train model
+model.fit(X, y)
 
-* Displays children **horizontally** in a row.
-* Uses `mainAxisAlignment` & `crossAxisAlignment` for alignment.
-
-## **4. Column Widget**
-
-* Displays children **vertically**.
-* Very similar to Row but vertical direction.
-
-## **5. Image Widget**
-
-* Shows images from assets, network, memory, or files.
-* Commonly used: `Image.asset()` or `Image.network()`.
-
-## **6. Icon Widget**
-
-* Displays built-in icons from Material Icons library.
-* Can set size and color.
-
-## **7. Scaffold Widget**
-
-* Provides basic visual layout structure.
-* Contains AppBar, Body, FloatingActionButton, Drawer, etc.
-
-## **8. AppBar Widget**
-
-* A horizontal bar at the top.
-* Contains title, actions (buttons), and background color.
-
-## **9. ElevatedButton Widget**
-
-* A Material Design button.
-* Used for actions like submit, click, next.
-* Has elevation and background color.
-
-## **10. TextField Widget**
-
-* Used to take input from the user.
-* Supports controllers, keyboard type, decoration, validation.
-
-## **11. ListView Widget**
-
-* Scrollable list of widgets.
-* Can be vertical or horizontal.
-* Used when showing long lists (contacts, messages, products).
-
-## **12. Stack Widget**
-
-* Places widgets **on top of each other**.
-* Used for overlapping UI elements.
-
-## **13. Card Widget**
-
-* Displays content inside a Material Design card.
-* Has rounded corners, shadows.
-
-## **14. SizedBox Widget**
-
-* Used to create space between widgets.
-* Can also set fixed width or height.
-
-## **15. Padding Widget**
-
-* Adds internal spacing around a child widget.
-
-## **16. Center Widget**
-
-* Centers the child inside the available space.
-
-## **17. AlertDialog Widget**
-
-* Displays pop-up dialog boxes.
-* Used for warnings, confirmations, messages.
-
-## **18. Drawer Widget**
-
-* A side navigation panel that slides from the left.
-
-## **19. BottomNavigationBar Widget**
-
-* A bar at the bottom with multiple tabs.
-* Used for navigation between screens.
-
-## **20. GridView Widget**
-
-* Displays items in a grid (rows and columns).
-* Used for gallery view, product listing, dashboards.
-
-////////////RESPONSIVE UI TO DIFFERENT SCREENS //////////////////
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Ultra Simple Responsive UI")),
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            // if width < 600 = mobile
-            if (constraints.maxWidth < 600) {
-              return Column(
-                children: [
-                  Container(height: 100, color: Colors.red, margin: EdgeInsets.all(10)),
-                  Container(height: 100, color: Colors.blue, margin: EdgeInsets.all(10)),
-                ],
-              );
-            } else {
-              // tablet or bigger
-              return Row(
-                children: [
-                  Expanded(child: Container(height: 100, color: Colors.red, margin: EdgeInsets.all(10))),
-                  Expanded(child: Container(height: 100, color: Colors.blue, margin: EdgeInsets.all(10))),
-                ],
-              );
-            }
-          },
-        ),
-      ),
-    );
-  }
-}
-
-/////////////// MEDIA QUERIES AND BREAK POINTS //////////////////////////////
-
-import 'package:flutter/material.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("MediaQuery Example")),
-        body: ResponsiveText(),
-      ),
-    );
-  }
-}
-
-class ResponsiveText extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;  // Get screen width
-    String view;
-
-    if (width < 600) {
-      view = "Mobile View";
-    } else if (width < 1200) {
-      view = "Tablet View";
-    } else {
-      view = "Desktop View";
-    }
-
-    return Center(
-      child: Text(
-        view,
-        style: TextStyle(
-          fontSize: width < 600 ? 20 : width < 1200 ? 28 : 36,
-          fontWeight: FontWeight.bold,
-          color: Colors.blue,
-        ),
-      ),
-    );
-  }
-}
-
-
-/////////////////////// NAVIGATORS WITH NAMED ROUTES ////////////////////////////
-
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',   // Starting screen
-    routes: {
-      '/': (context) => Screen1(),      // Name for Screen1
-      '/screen2': (context) => Screen2() // Name for Screen2
-    },
-  ));
-}
-
-class Screen1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Screen 1")),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Go to Screen 2"),
-          onPressed: () {
-            Navigator.pushNamed(context, '/screen2'); // Go using route name
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Screen 2")),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Back"),
-          onPressed: () {
-            Navigator.pop(context); // Go back
-          },
-        ),
-      ),
-    );
-  }
-}
-
-
-/////////////////////// PROVIDER SET STTATE ////////////////////////////
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => Counter(),
-      child: MaterialApp(home: CounterScreen()),
-    ),
-  );
-}
-
-class Counter with ChangeNotifier {
-  int count = 0;
-  void inc() {
-    count++;
-    notifyListeners();
-  }
-}
-
-class CounterScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var c = Provider.of<Counter>(context);
-
-    return Scaffold(
-      appBar: AppBar(title: Text("Provider")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Count: ${c.count}"),
-            ElevatedButton(
-              onPressed: () {
-                c.inc();
-              },
-              child: Text("Increase"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+# Predict price for new house
+# Example: 1800 sq ft, 3 bedrooms, 12 years old
+new_house = np.array([[1800, 3, 12]])
+
+predicted_price = model.predict(new_house)
+
+# Output
+print("Predicted House Price:", predicted_price[0])
+
+
+6666666666666666666666666666666666666666
+# Import libraries
+import numpy as np
+from sklearn.tree import DecisionTreeClassifier
+
+# Dataset
+X = np.array([[150], [160], [170], [180], [190]])
+y = np.array([0, 0, 1, 1, 1])
+
+# Create model with parameters
+model = DecisionTreeClassifier(
+    max_depth=2,
+    min_samples_split=2,
+    criterion='entropy'
+)
+
+# Train model
+model.fit(X, y)
+
+# Predict
+prediction = model.predict([[165]])
+
+print("Prediction:", prediction)
+
+777777777777777777777777777777777777777777777777777777777777777
+# Import libraries
+import numpy as np
+from sklearn.neighbors import KNeighborsClassifier
+
+# Sample dataset
+# Features: [Height, Weight]
+X = np.array([
+    [150, 50],
+    [160, 60],
+    [170, 65],
+    [180, 70],
+    [190, 80]
+])
+
+# Labels: 0 = Short, 1 = Tall
+y = np.array([0, 0, 1, 1, 1])
+
+# Create KNN model (k = 3)
+model = KNeighborsClassifier(n_neighbors=3)
+
+# Train the model
+model.fit(X, y)
+
+# New data for prediction
+new_data = np.array([[165, 62]])
+
+# Predict
+prediction = model.predict(new_data)
+
+# Output result
+if prediction[0] == 0:
+    print("Person is Short")
+else:
+    print("Person is Tall")
